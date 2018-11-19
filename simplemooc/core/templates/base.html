@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Interact</title>
+<title>Interact - {% block title-page %}{% endblock %}</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -43,15 +43,16 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand page-scroll" href="{% url 'home' %}">Interact</a> </div>
+      <a class="navbar-brand page-scroll" href="{% url 'core:home' %}">Interact</a> </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'services' %}">Services</a></li>
-        <li><a href="{% url 'gallery' %}">Gallery</a></li>
-        <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'core:about' %}">About</a></li>
+        <li><a href="{% url 'core:services' %}">Services</a></li>
+        <li><a href="{% url 'core:gallery' %}">Gallery</a></li>
+        <li><a href="{% url 'core:contact' %}">Contact</a></li>
+        <li><a href="{% url 'courses:index' %}">Courses</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->

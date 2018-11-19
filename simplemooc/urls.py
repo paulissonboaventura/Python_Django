@@ -15,17 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from simplemooc.core import views as core_views
+from django.conf import settings
+from django.conf.urls.static import static
+from simplemooc.core import urls as core_urls
+from simplemooc.courses import urls as courses_urls
 
-core_patterns = [
-    path('', core_views.home, name='home'),
-    path('about/', core_views.about, name='about'),
-    path('services/', core_views.services, name='services'),
-    path('gallery/', core_views.gallery, name='gallery'),
-    path('contact/', core_views.contact, name='contact'),
-]
+
+admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(core_patterns)),
+    path('', include(core_urls, namespace='core')),
+    path('courses/', include(courses_urls, namespace='courses')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

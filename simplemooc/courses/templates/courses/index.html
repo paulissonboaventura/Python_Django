@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title-page %}Courses{% endblock %}
+
+{% block content %}
+<div id="courses">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Courses</h2>
+            <p>Abaixo a lista de cursos disponíveis na plataforma</p>
+        </div>
+    </div>
+    {% for course in courses %}
+    <div class="row">
+        <div class="col-md-3">
+            {% if course.image %}
+            <img src="{{ course.image.url }}" class="img-no-responsive" alt="{{ course.name }}">
+            {% else %}
+            <img src="{% static 'img/course-image.png' %}" class="img-no-responsive" alt="{{ course.name }}">
+            {% endif %}
+        </div>
+            <div class="col-md-8">
+                <div class="course-text">
+                  <h3><a href="{{ course.get_absolute_url }}" title=""></a> {{ course.name }}</h3>
+                  {{ course.description|linebreaks }}
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
